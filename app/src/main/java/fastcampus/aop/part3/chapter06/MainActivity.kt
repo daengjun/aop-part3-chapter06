@@ -8,6 +8,17 @@ import fastcampus.aop.part3.chapter06.chatlist.ChatListFragment
 import fastcampus.aop.part3.chapter06.home.HomeFragment
 import fastcampus.aop.part3.chapter06.mypage.MyPageFragment
 
+/**
+ * 인트로 (완성앱 & 구현 기능 소개)
+메인 페이지 Tab UI 구성하기
+상품 목록 페이지 UI 구성하기
+Firebase Realtime Database 를 활용하여 DB 구조 구상하기
+Firebase에서 상품 목록 가져와 보여주기
+Firebase Storage 를 이용하여 사진 업로드 추가하기
+마이페이지 구현하기
+채팅 리스트 구현하기
+채팅 페이지 구현하기 **/
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
