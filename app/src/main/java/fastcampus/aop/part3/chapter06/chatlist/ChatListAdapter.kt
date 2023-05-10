@@ -7,11 +7,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import fastcampus.aop.part3.chapter06.databinding.ItemChatListBinding
 
-class ChatListAdapter(val onItemClicked: (ChatListItem) -> Unit) : ListAdapter<ChatListItem, ChatListAdapter.ViewHolder>(diffUtil) {
+// 리스트 어댑터 채팅방 목록 표시
+class ChatListAdapter(val onItemClicked: (ChatListItem) -> Unit) :
+    ListAdapter<ChatListItem, ChatListAdapter.ViewHolder>(diffUtil) {
 
-    inner class ViewHolder(private val binding: ItemChatListBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemChatListBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(chatListItem: ChatListItem) {
+
+            // 채팅방 목록 아이템 클릭 리스너
             binding.root.setOnClickListener {
                 onItemClicked(chatListItem)
             }
@@ -22,7 +27,13 @@ class ChatListAdapter(val onItemClicked: (ChatListItem) -> Unit) : ListAdapter<C
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemChatListBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(
+            ItemChatListBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

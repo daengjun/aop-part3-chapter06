@@ -10,11 +10,14 @@ import fastcampus.aop.part3.chapter06.databinding.ItemArticleBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
-class ArticleAdapter(val onItemClicked: (ArticleModel) -> Unit) : ListAdapter<ArticleModel, ArticleAdapter.ViewHolder>(diffUtil) {
+class ArticleAdapter(val onItemClicked: (ArticleModel) -> Unit) :
+    ListAdapter<ArticleModel, ArticleAdapter.ViewHolder>(diffUtil) {
 
-    inner class ViewHolder(private val binding: ItemArticleBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemArticleBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(articleModel: ArticleModel) {
+            // long으로 시간값을 받아와서 date 형식으로 텍스트뷰에 표시 (월,일로)
             val format = SimpleDateFormat("MM월 dd일")
             val date = Date(articleModel.createdAt)
 
@@ -28,17 +31,23 @@ class ArticleAdapter(val onItemClicked: (ArticleModel) -> Unit) : ListAdapter<Ar
                     .into(binding.thumbnailImageView)
             }
 
+            // 아이템 클릭 리스너 콜백
             binding.root.setOnClickListener {
                 onItemClicked(articleModel)
             }
-
 
 
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(
+            ItemArticleBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
