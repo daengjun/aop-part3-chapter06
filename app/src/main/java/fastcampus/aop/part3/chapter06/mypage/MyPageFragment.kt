@@ -72,6 +72,7 @@ class MyPageFragment : Fragment(R.layout.fragment_mypage) {
         }
 
         // 가입 버튼 클릭 리스너
+        // 이메일 형식이 잘못되거나 , 비밀번호가 6자리 미만이면 사용 불가
         fragmentMypageBinding.signUpButton.setOnClickListener {
             binding?.let { binding ->
                 val email = binding.emailEditText.text.toString()
